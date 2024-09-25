@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace _2492024WebLab
@@ -21,13 +22,29 @@ namespace _2492024WebLab
             this.HoursWorked = HoursWorked;
             this.HourlyRate = HourlyRate;
         }
+
         public override string ToString()
         {
             return $"{eName}({eId})";
         }
+
         public double CalculateWage()
-        { 
-        return HoursWorked * HourlyRate;
+        {
+            return HoursWorked * HourlyRate;
+        }
+
+        public static bool NameValidation(string name)
+        {
+        return !string.IsNullOrWhiteSpace(name) && name.Length >= 1 && name.Length <=50;
+        }
+
+        public static bool HourValidation(double WeeklyHours)
+        {
+            return WeeklyHours >= 1 && WeeklyHours <= 100;
+        }
+        public static bool IdValidation(string id)
+        {
+            return Regex.IsMatch(id, @"^[A-Za-z]\d{2}$");
         }
     }
 }
