@@ -59,11 +59,12 @@ internal class Program
             static void displayEmployees()
             {
                 Console.WriteLine("List of Employees: ");
+                int index = 1;
                 foreach (Employee employee in employeeList)
                 {
-                    Console.WriteLine(employee.ToString());
+                    Console.WriteLine($"{index}: {employee.ToString()}");
                     Console.WriteLine($"Wage is: ${employee.CalculateWage()}");
-
+                    index++;
                 }
             }
             static void deleteEmployee()
