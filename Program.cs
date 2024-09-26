@@ -40,8 +40,7 @@ internal class Program
             }
 
 
-            /*addEmployee();
-            displayEmployees();*/
+          /*seperate employee and wages into two different clases and make a list be as it's own entity as company, maybe add */
 
             static void addEmployee()
             {
