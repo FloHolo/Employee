@@ -29,7 +29,7 @@ internal class Program
                 case "1":
                     addEmployee(); break;
                 case "2":
-                    break;
+                    deleteEmployee(); break;
                 case "3":
                     displayEmployees(); break;
                 case "4":
@@ -66,6 +66,28 @@ internal class Program
 
                 }
             }
+            static void deleteEmployee()
+            {
+                displayEmployees();
+                if (employeeList.Count == 0)
+                {
+                    Console.WriteLine("No employees found");
+                    return;
+                }
+
+                int position;
+                Console.Write($"Enter position to delete (1 to {employeeList.Count})");
+
+                while (!int.TryParse(Console.ReadLine(), out position) || position < 1 || position > employeeList.Count)
+                {
+                    Console.WriteLine($"Invalid output, please select from (1 to {employeeList.Count})");
+                }
+                int index = position - 1;
+                Employee employeeToRemove = employeeList[index];
+                employeeList.RemoveAt(index);
+
+                Console.WriteLine($"Employee {employeeToRemove.eName}(ID: {employeeToRemove.eId}) has been removed.");
+                }
 
         }
     }
