@@ -29,7 +29,7 @@ internal class Program
                 case "1":
                     addEmployee(); break;
                 case "2":
-                    break;
+                    deleteEmployee(); break;
                 case "3":
                     displayEmployees(); break;
                 case "4":
@@ -40,8 +40,7 @@ internal class Program
             }
 
 
-            /*addEmployee();
-            displayEmployees();*/
+          /*seperate employee and wages into two different clases and make a list be as it's own entity as company, maybe add */
 
             static void addEmployee()
             {
@@ -59,13 +58,36 @@ internal class Program
             static void displayEmployees()
             {
                 Console.WriteLine("List of Employees: ");
+                int index = 1;
                 foreach (Employee employee in employeeList)
                 {
-                    Console.WriteLine(employee.ToString());
+                    Console.WriteLine($"{index}: {employee.ToString()}");
                     Console.WriteLine($"Wage is: ${employee.CalculateWage()}");
-
+                    index++;
                 }
             }
+            static void deleteEmployee()
+            {
+                displayEmployees();
+                if (employeeList.Count == 0)
+                {
+                    Console.WriteLine("No employees found");
+                    return;
+                }
+
+                int position;
+                Console.Write($"Enter position to delete (1 to {employeeList.Count})");
+
+                while (!int.TryParse(Console.ReadLine(), out position) || position < 1 || position > employeeList.Count)
+                {
+                    Console.WriteLine($"Invalid output, please select from (1 to {employeeList.Count})");
+                }
+                int index = position - 1;
+                Employee employeeToRemove = employeeList[index];
+                employeeList.RemoveAt(index);
+
+                Console.WriteLine($"Employee {employeeToRemove.eName}(ID: {employeeToRemove.eId}) has been removed.");
+                }
 
         }
     }
