@@ -13,8 +13,8 @@ internal class Program
         var workerTwo = new Employee("Hoby Kills", "H65", new Wage(36));
 
         company.AddEmployee(worker);
-        company.AddEmployee((Employee)workerOne);
-        company.AddEmployee((Employee)workerTwo);
+        company.AddEmployee(workerOne);
+        company.AddEmployee(workerTwo);
 
         bool Online = true;
         while (Online)
@@ -46,7 +46,7 @@ internal class Program
                 string newEmployeeId = GetValidEmployeeId();
                 double hoursWorked = GetValidEmployeeHours();
 
-                Wage wage = new Wage(hoursWorked);
+                var wage = new Wage(hoursWorked);
 
                 var newEmployee = new Employee(NewEmployeeName, newEmployeeId, wage);
 
